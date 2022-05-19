@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id "application"
+}
+
+group 'org.oracle.assignment'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+    testImplementation group: 'org.mockito', name: 'mockito-inline', version: '4.5.1'
+
+}
+
+ext {
+    javaMainClass = "com.oracle.assignment.ReportGeneratorMain"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = javaMainClass
+}
