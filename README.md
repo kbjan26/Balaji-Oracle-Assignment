@@ -12,6 +12,15 @@ From the application directory , execute the below command to do the build along
 
 **gradlew clean build test**
 
+or 
+
+
+**gradle clean build test**
+
 Once the build is successful , execute the below command from the same directory to view the output
 
 **gradlew run**
+
+or 
+
+**gradle run**
