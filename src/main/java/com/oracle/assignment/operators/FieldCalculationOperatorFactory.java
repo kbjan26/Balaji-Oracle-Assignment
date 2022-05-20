@@ -7,13 +7,17 @@ import com.oracle.assignment.ruleoutput.RuleOperationOutput;
 
 public class FieldCalculationOperatorFactory {
 
+    private RuleOperationOutput ruleOperationOutput;
+
+    public FieldCalculationOperatorFactory(RuleOperationOutput ruleOperationOutput) {
+        this.ruleOperationOutput = ruleOperationOutput;
+    }
+
     public FieldCalculationOperator getOperator(String filedOperatorName) {
         if (filedOperatorName == null) {
             return null;
         }
         FieldCalculationOperator fieldOperator = null;
-        RuleConfiguration ruleConfiguration = new RuleConfiguration(RuleConstants.getRuleList());
-        RuleOperationOutput ruleOperationOutput = new RuleOperationOutput(ruleConfiguration);
         if (DataSetOperation.DISTINCT_COUNT.name().equalsIgnoreCase(filedOperatorName)) {
             fieldOperator = new DistinctCountCalculationOperator(ruleOperationOutput);
         } else if (DataSetOperation.DISTINCT_LIST.name().equalsIgnoreCase(filedOperatorName)) {

@@ -37,7 +37,8 @@ public class ReportGeneratorMain {
         RuleConfiguration ruleConfiguration=new RuleConfiguration(RuleConstants.getRuleList());
         RuleOperationOutput ruleOperationOutput=new RuleOperationOutput(ruleConfiguration);
         OperatorUtil operatorUtil=
-                new OperatorUtil(new ReportInputValidator(),new FieldCalculationOperatorFactory(), DataSetOperation.values(),
+                new OperatorUtil(new ReportInputValidator(),new FieldCalculationOperatorFactory(ruleOperationOutput),
+                        DataSetOperation.values(),
                         ruleOperationOutput);
         return operatorUtil;
     }

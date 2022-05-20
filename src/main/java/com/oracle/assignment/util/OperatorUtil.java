@@ -20,7 +20,6 @@ public class OperatorUtil {
     private InputValidator reportInputValidator;
     private DataSetOperation[] dataSetOperations;
     private RuleOperationOutput ruleOperationOutput;
-    Map<DataSetOperation, FieldCalculationOperator> operationFieldCalculationOperatorMap;
 
     public OperatorUtil(InputValidator reportInputValidator, FieldCalculationOperatorFactory fieldCalculationOperatorFactory,
                         DataSetOperation[] dataSetOperations, RuleOperationOutput ruleOperationOutput) {
@@ -28,19 +27,14 @@ public class OperatorUtil {
         this.fieldOperatorFactory = fieldCalculationOperatorFactory;
         this.dataSetOperations = dataSetOperations;
         this.ruleOperationOutput = ruleOperationOutput;
-        operationFieldCalculationOperatorMap = new HashMap<>();
-        for (DataSetOperation operation : dataSetOperations) {
-            operationFieldCalculationOperatorMap.put(operation,
-                    fieldOperatorFactory.getOperator(operation.name()));
-        }
     }
 
 
     public void applyRulesAndCollectData(String input) {
-        if(!reportInputValidator.validate(input)){
+        if (!reportInputValidator.validate(input)) {
             throw new InvalidInputException(input);
         }
-        if(!reportInputValidator.validateFields(input.split(COMMA))){
+        if (!reportInputValidator.validateFields(input.split(COMMA))) {
             throw new InvalidInputException(input);
         }
         String[] splitLine = input.split(COMMA);
@@ -66,6 +60,6 @@ public class OperatorUtil {
     }
 
     private FieldCalculationOperator getFieldOperator(String operationName) {
-        return operationFieldCalculationOperatorMap.get(DataSetOperation.valueOf(operationName));
+        return fieldOperatorFactory.getOperator(operationName);
     }
 }
