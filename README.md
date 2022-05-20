@@ -24,3 +24,11 @@ Once the build is successful , execute the below command from the same directory
 or 
 
 **gradle run**
+
+Execution Evidence
+
+![image](https://user-images.githubusercontent.com/24966464/169437573-02a50fb3-37cd-4d5d-a427-68b49e5a87c2.png)
+
+
+![image](https://user-images.githubusercontent.com/24966464/169437658-b71ccfb4-92e0-4b67-b889-0195e8016303.png)
+
