@@ -25,9 +25,15 @@ public class RuleConstants {
                 .sourceStatHeader(ColumnHeader.geoZone)
                 .operation(DataSetOperation.AVERAGE)
                 .destinationStatHeader(ColumnHeader.buildDuration).build();
+        Rule uniqueCustomerIdListForGeoZone = new Rule.RuleBuilder()
+                .ruleName("uniqueCustomerIdListForGeoZone")
+                .sourceStatHeader(ColumnHeader.geoZone)
+                .operation(DataSetOperation.DISTINCT_LIST)
+                .destinationStatHeader(ColumnHeader.customerId).build();
         getRuleList().add(uniqueCustomerIdCountForContractId);
         getRuleList().add(uniqueCustomerIdCountForGeoZone);
         getRuleList().add(averageBuildDurationForEachGeoZone);
+        getRuleList().add(uniqueCustomerIdListForGeoZone);
     }
 
     public static List<Rule> getRuleList() {
